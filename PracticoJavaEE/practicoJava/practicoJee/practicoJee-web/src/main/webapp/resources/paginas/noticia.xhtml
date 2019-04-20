@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"	
+	template="/plantilla/template.xhtml"	
+	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="pageTitle">Practico de Java EE</ui:define>
+
+	<ui:define name="head"></ui:define>
+
+	<ui:define name="titulo">Practico de Java EE</ui:define>
+
+	<ui:define name="contenido">	
+	
+		<!-- Contenido de la Pagina JSF con algunos componentes de PrimeFaces -->			
+		<h:form id="form">
+		
+			<!-- Componente para actualizar por ajax -->
+			<h:panelGrid columns="2" cellpadding="8">
+				<p:outputLabel value="Agregar Noticia" for="update" ></p:outputLabel>
+				<p:outputLabel value="#{noticiaJsf.noticia.titulo}" id="update"></p:outputLabel>
+			</h:panelGrid>			
+		
+			<!-- Manejar el estado de la pagina -->
+			<p:growl id="msgs" showDetail="true" />
+		
+			<!-- Grid para organizar el formulario -->
+	<!--		<h:panelGrid columns="2" cellpadding="8">
+				
+				<p:outputLabel value="Nombre(*)" for="idTxtNombre" />
+				
+				<p:inputText value="#{userJsf.desarrollador.primerNombre}" id="idTxtNombre" required="true" requiredMessage="Nombre es requerido">					
+					
+					<!-- soporte de ajax para actualizar componentes sin refrescar la página  -->
+					<!-- elementos importantes: event y update -->
+		<!--			<p:ajax event="keyup" update="update"></p:ajax>					
+				</p:inputText>								
+								
+				<p:outputLabel value="Segundo Nombre" for="idTxtSegundoNombre" />
+				<p:inputText value="#{userJsf.desarrollador.segundoNombre}" id="idTxtSegundoNombre" ></p:inputText>
+								
+				<p:outputLabel value="Primer Apellido (*)" for="idTxtPrimerApellido" />
+				<p:inputText value="#{userJsf.desarrollador.primerApellido}" id="idTxtPrimerApellido"  required="true" requiredMessage="Primer Apellido es requerido"></p:inputText>
+								
+				<p:outputLabel value="Segundo Apellido" for="idTxtSegundoApellido" />
+				<p:inputText value="#{userJsf.desarrollador.segundoApellido}" id="idTxtSegundoApellido" ></p:inputText>
+								
+				<p:outputLabel value="Fecha de Nacimiento (*)" for="idTxtFechaNacimiento" />								
+				<p:calendar value="#{userJsf.desarrollador.fechaNacimiento}" id="idTxtFechaNacimiento" required="true" requiredMessage="Fecha de Nacimiento es requerido"></p:calendar>
+								
+				<p:outputLabel value="Sexo (*)" for="idSelOneMenuSexo" />
+				<p:selectOneMenu id="idSelOneMenuSexo" value="#{userJsf.desarrollador.sexo.idSexo}" style="width:125px" required="true" requiredMessage="Sexo es requerido">
+		            <f:selectItem itemLabel="--Seleccionar--" itemValue="-1" />
+		            <f:selectItem itemLabel="Femenino" itemValue="1" />
+		            <f:selectItem itemLabel="Masculino" itemValue="2" />	           
+		        </p:selectOneMenu>			       
+		        
+		        <p:outputLabel value=" " for="btnAdd" />
+		        <p:commandButton value="Adicionar" action="#{userJsf.adicionarDesarrollador}" id="btnAdd" update="@form"></p:commandButton>
+		       			
+			</h:panelGrid>
+			-->
+			<!-- Con esto queda pronto la tabla para listar todos los elementos que tiene la lista: listaDesarrolladores -->	
+				<!-- Con este nuevo atributo estamos indicando mostrar la tabla cuando size > 0, o sea que tenga elementos  -->					
+				<p:dataTable var="desarrollador" value="#{userJsf.listaDesarrolladores}" rendered="#{userJsf.listaDesarrolladores.size() gt 0}">
+				   
+				    <p:column headerText="Primer Nombre">
+				        <h:outputText value="#{desarrollador.primerNombre}" />
+				    </p:column>
+				 
+				    <p:column headerText="Segundo Nombre">
+				        <h:outputText value="#{desarrollador.segundoNombre}" />
+				    </p:column>
+				 
+				    <p:column headerText="Primer Apellido">
+				        <h:outputText value="#{desarrollador.primerApellido}" />
+				    </p:column>	 
+				    
+				</p:dataTable>		
+			
+		</h:form>
+				
+	</ui:define>
+
+	<br></br>
+
+	<ui:define name="piePag">
+		<footer>
+			
+		</footer>
+	</ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,76 @@
+package com.practico.entyties;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.*;
+
+/**
+ * Entity implementation class for Entity: Noticia
+ *
+ */
+@Entity
+@NamedQuery(name="Noticia.getAll", query="SELECT n FROM Noticia n")
+public class Noticia implements Serializable {
+
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name="NOTICIA")
+	private long id;
+	
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name="SEGUIMIENTO")
+	private long seguimiento;
+	
+	@Column(name="TITULO")
+	private String titulo;
+	
+	@Column(name="DESCRIPCION")
+	private String descripcion;
+	
+
+
+	@OneToMany
+	private List<Publicacion> publicaciones;
+
+	public Noticia() {
+		super();
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	
+	public List<Publicacion> getPublicaciones() {
+		return publicaciones;
+	}
+
+	public void setPublicaciones(List<Publicacion> publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+	
+	
+   
+}

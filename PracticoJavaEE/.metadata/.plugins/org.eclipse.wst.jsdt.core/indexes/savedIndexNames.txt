@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+/home/diego/Escritorio/PracticoJavaEE/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3663929763.index
+2868288651.index
+912552497.index
+1615578291.index
+4136782897.index
+321318785.index

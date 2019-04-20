@@ -1,0 +1,5 @@
+package com.practico.cliente;
+
+public class QueueSender {
+
+}

@@ -1,0 +1,13 @@
+package org.proyecto.negocio;
+
+import javax.ejb.Singleton;
+
+import org.jboss.logging.Logger;
+
+@Singleton
+public class NegocioImp implements NegocioI{
+	
+	public static final Logger logger = Logger.getLogger(NegocioImp.class);
+	
+
+}

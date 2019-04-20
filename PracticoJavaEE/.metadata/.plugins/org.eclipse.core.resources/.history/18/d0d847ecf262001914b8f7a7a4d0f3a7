@@ -1,0 +1,35 @@
+package com.practico.cliente;
+
+import javax.jms.Queue;
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.QueueSession;
+import javax.naming.Context;
+
+public class QueueSender {
+	
+	private Context context = null;
+	private QueueConnectionFactory factory = null;
+	private QueueConnection connection = null;
+	private Queue queue = null;
+	private QueueSession session = null;
+	private QueueSender sender = null;
+
+	public static void main(String[] args) {
+
+	MessageSender sender = new MessageSender();
+	sender.sendmessage();
+
+	}
+
+	public void sendmessage() {
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

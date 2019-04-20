@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.faces.bean.ViewScoped"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="javax.persistence.PersistenceContext"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+    <fullyQualifiedTypeName name="javax.persistence.Query"/>
+    <fullyQualifiedTypeName name="javax.sql.rowset.spi.TransactionalWriter"/>
+    <fullyQualifiedTypeName name="javax.persistence.NamedQuery"/>
+    <fullyQualifiedTypeName name="javax.ejb.Local"/>
+    <fullyQualifiedTypeName name="javax.ejb.Stateless"/>
+    <fullyQualifiedTypeName name="javax.enterprise.context.RequestScoped"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+    <fullyQualifiedTypeName name="javax.inject.Inject"/>
+    <fullyQualifiedTypeName name="javax.ejb.Singleton"/>
+    <fullyQualifiedTypeName name="javax.ejb.EJB"/>
+    <fullyQualifiedTypeName name="org.proyecto.DAO.NoticiaDaoImp"/>
+    <fullyQualifiedTypeName name="org.proyecto.clases.Noticia"/>
+    <fullyQualifiedTypeName name="org.proyecto.datatype.Helper"/>
+    <fullyQualifiedTypeName name="org.proyecto.datatype.PublicacionDataType"/>
+    <fullyQualifiedTypeName name="org.proyecto.DAO.NoticiaDaoI"/>
+    <fullyQualifiedTypeName name="org.proyecto.DAO.PublicacionDaoI"/>
+    <fullyQualifiedTypeName name="javax.enterprise.inject.Produces"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.Produces"/>
+    <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+    <fullyQualifiedTypeName name="org.proyecto.clases.Publicacion"/>
+    <fullyQualifiedTypeName name="org.proyecto.DAO.PublicacionDaoImp"/>
+    <fullyQualifiedTypeName name="org.jboss.logging.Logger"/>
+    <fullyQualifiedTypeName name="org.proyecto.negocio.NegocioI"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.proyecto.datatype.NoticiaDataType"/>
+    <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+    <fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
+    <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
+</qualifiedTypeNameHistroy>

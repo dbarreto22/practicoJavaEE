@@ -1,0 +1,18 @@
+package org.proyecto.DAO;
+
+import java.util.List;
+
+import javax.ejb.Local;
+
+import org.proyecto.clases.Noticia;
+
+
+@Local
+public interface NoticiaDaoI {
+	
+	
+	void adicionarNoticia(Noticia noticia) throws Exception;	
+	
+	List<Noticia> obtenerNoticias() throws Exception;
+
+}

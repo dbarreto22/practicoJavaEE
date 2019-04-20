@@ -1,0 +1,37 @@
+package com.practico.JMS;
+
+import javax.jms.QueueConnection;
+import javax.jms.QueueSender;
+import javax.jms.QueueSession;
+import javax.jms.Session;
+
+public class Sender implements Runnable {
+	
+	private QueueSession session;
+	private QueueSender sender;
+	
+	public Sender(QueueConnection connection, javax.jms.Queue queue) throws Exception {
+		this.session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+		this.sender = this.session.createSender(queue);
+	}
+	
+	public void close() throws Exception  {
+		sender.close();
+		session.close();
+	}
+	
+	@Override
+	public void run() {
+		try {
+			for (int i = 0; i < 10; ++i) {
+				Message mensaje = session.createTextMessage(String.format("Â¡Hola mundo! (%d)", i));
+				sender.send(mensaje);
+				Thread.sleep(1000);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+}

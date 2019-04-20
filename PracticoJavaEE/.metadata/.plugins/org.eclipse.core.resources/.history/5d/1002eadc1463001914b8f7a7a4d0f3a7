@@ -1,0 +1,54 @@
+package com.proyectoJee.SOAP;
+
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+import com.practico.entyties.Publicacion;
+import com.sun.xml.bind.XmlAccessorFactory;
+
+
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
+public class NoticiaSoap {
+	
+	private long seguimiento;
+	private String titulo;
+	private String descripcion;
+	private List<Publicacion> publicaciones;
+	
+	public NoticiaSoap() {
+		super();
+	}
+	public long getSeguimiento() {
+		return seguimiento;
+	}
+	public void setSeguimiento(long seguimiento) {
+		this.seguimiento = seguimiento;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public List<Publicacion> getPublicaciones() {
+		return publicaciones;
+	}
+	public void setPublicaciones(List<Publicacion> publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+	
+	
+	
+	
+
+}

@@ -1,0 +1,33 @@
+package org.proyectoJee.REST;
+
+import java.util.List;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+import org.proyecto.DAO.NoticiaDaoImp;
+import org.proyecto.clases.Noticia;
+
+
+@Path("/noticia")
+@RequestScoped
+public class RESTServiceNoticia {
+	
+	@Inject
+    NoticiaDaoImp noticiaDaoI;
+
+    @GET
+    @javax.ws.rs.Produces("application/json")
+    public List<Noticia> listarNoticias() {
+        return noticiaDaoI.obtenerNoticias();
+    }
+ /*   
+    @GET
+    @Produces
+    public List<Publicacion>  listarPublicaciones(){
+    	return publicacionDao.obtenerPublicaciones();
+    }*/
+
+}

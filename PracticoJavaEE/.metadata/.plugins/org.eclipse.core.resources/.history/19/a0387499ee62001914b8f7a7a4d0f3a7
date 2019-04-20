@@ -1,0 +1,28 @@
+package com.practico.utility;
+
+import java.util.Properties;
+
+import javax.enterprise.context.spi.Context;
+import javax.naming.NamingException;
+import javax.naming.Context;
+
+public class NoticiaUtility {
+	
+	private static final String PROVIDER_URL= "jnp:/localhost:1099";
+	
+	private static final String JNP_INTERFACES= "org.jboss.naming:org.jnp.interfaces";
+	
+	private static final String INITIAL_CONTEXT_FACTORY= "org.jnp.interfaces.NamingContextFactory";
+	
+	private static Context initialContext;
+	
+	public static Context getInitialContextNotici() throws NamingException {
+		if (initialContext==null) {
+			Properties prop = new Properties();
+			prop.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
+			prop.put(Context., )
+		}
+		
+	}
+
+}

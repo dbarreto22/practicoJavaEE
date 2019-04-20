@@ -1,0 +1,14 @@
+1555468739446	Move 'listarNoticias.xhtml' to 'paginas'
+1555600881265	Move 2 resources to 'webapp'
+1555600923094	Delete element
+1555617151671	Delete elements
+1555628344165	Delete element
+1555628370104	Delete element
+1555630016603	Delete element
+1555727232951	Rename package 'org.proyectoJee.beans'
+1555727242624	Rename package 'org.proyectoJee.REST'
+1555727274268	Rename package 'org.proyectoJee.SOAP'
+1555727996243	Rename type 'NoticiaSoap'
+1555728008258	Rename type 'PublicacionSoap'
+1555729486626	Rename type 'NoticiaService'
+1555730823109	Delete element

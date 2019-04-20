@@ -1,0 +1,24 @@
+package org.proyecto.negocio;
+
+import javax.ejb.EJB;
+import javax.ejb.Singleton;
+
+import org.jboss.logging.Logger;
+import org.proyecto.DAO.NoticiaDaoI;
+import org.proyecto.clases.Noticia;
+
+
+@Singleton
+public class NegocioImp implements NegocioI{
+	
+	public static final Logger logger = Logger.getLogger(NegocioImp.class);
+	
+	@EJB
+	NoticiaDaoI noticiadao;
+	
+	@Override
+	public void ingresarNoticia(Noticia noticia) {
+		
+	}
+
+}

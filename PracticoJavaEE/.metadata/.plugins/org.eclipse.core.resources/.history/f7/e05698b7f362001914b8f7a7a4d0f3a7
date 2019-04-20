@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+
+<configuration
+	xmlns:xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="urn:hornetq"
+	xsi:squemaLocation="urn:hornetq /schema/hornetq-jms.xsd">
+
+	<queue name="queue_alta_noticia">
+		<entry name="/queue/MyQueue" />
+	</queue>
+
+</configuration>

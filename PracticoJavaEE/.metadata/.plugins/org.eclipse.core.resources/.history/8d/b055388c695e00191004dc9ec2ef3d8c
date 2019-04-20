@@ -1,0 +1,10 @@
+package org.proyectoJee.REST;
+
+import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.Path;
+
+@Path("/members")
+@RequestScoped
+public class RESTServiceNoticia {
+
+}

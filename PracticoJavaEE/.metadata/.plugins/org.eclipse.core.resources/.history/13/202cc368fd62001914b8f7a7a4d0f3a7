@@ -1,0 +1,38 @@
+package com.practico.JMS;
+
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.QueueConnection;
+import javax.jms.QueueReceiver;
+import javax.jms.QueueSession;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
+public class Receiver implements MessageListener{
+	
+	
+	private QueueSession session;
+	private QueueReceiver receiver;
+	
+	public Receiver(QueueConnection connection, javax.jms.Queue queue) throws Exception {
+		this.session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+		this.receiver = this.session.createReceiver(queue);
+		this.receiver.setMessageListener(this);
+	}
+	
+	public void close() throws Exception  {
+		receiver.close();
+		session.close();
+	}
+	
+	@Override
+	public void onMessage(Message message) {
+		try {
+			TextMessage text = (TextMessage) message;
+			System.out.printf("Receptor (%s): Un publicador dice: Â«%sÂ»\n", this, text.getText());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

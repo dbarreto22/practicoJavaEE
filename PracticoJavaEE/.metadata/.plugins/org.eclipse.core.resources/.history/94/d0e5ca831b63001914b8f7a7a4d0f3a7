@@ -1,0 +1,49 @@
+package com.proyectoJee.SOAP;
+
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.DAO.PublicacionDaoImp;
+
+
+
+public class NoticiaServiceImp implements NoticiaServiceI{
+	
+private static Map<Integer,Noticia> noticias = new HashMap()<Integer,Noticia>();
+	
+	@Override
+	public boolean addPerson(Noticia n) {
+		if(noticias.get(n.getId()) != null) return false;
+		noticias.put(n.getId(), n);
+		return true;
+	}
+
+	@Override
+	public boolean deletePerson(int id) {
+		if(persons.get(id) == null) return false;
+		persons.remove(id);
+		return true;
+	}
+
+	@Override
+	public Person getPerson(int id) {
+		return persons.get(id);
+	}
+
+	@Override
+	public Person[] getAllPersons() {
+		Set<Integer> ids = persons.keySet();
+		Person[] p = new Person[ids.size()];
+		int i=0;
+		for(Integer id : ids){
+			p[i] = persons.get(id);
+			i++;
+		}
+		return p;
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.practico.DAO;
+
+import java.util.List;
+
+import javax.ejb.Local;
+
+import com.practico.entyties.Noticia;
+import com.practico.entyties.Publicacion;
+
+@Local
+public interface PublicacionDaoI {
+	
+	void adicionarPublicacion(Noticia noticia, Publicacion publicacion) throws Exception;	
+	
+	List<Publicacion> obtenerPublicaciones() throws Exception;
+
+}

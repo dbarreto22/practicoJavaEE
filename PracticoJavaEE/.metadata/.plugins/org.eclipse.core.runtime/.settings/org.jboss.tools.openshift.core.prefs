@@ -1,0 +1,4 @@
+//org.jboss.tools.openshift.core.connection.auth.https\://ddiegob2212@api.starter-us-west-2.openshift.com=OAuth
+//org.jboss.tools.openshift.core.connection.extproperties.https\://ddiegob2212@api.starter-us-west-2.openshift.com={}
+eclipse.preferences.version=1
+org.jboss.tools.openshift.core.connection.CONNECTION_NAMES=https\://ddiegob2212@api.starter-us-west-2.openshift.com

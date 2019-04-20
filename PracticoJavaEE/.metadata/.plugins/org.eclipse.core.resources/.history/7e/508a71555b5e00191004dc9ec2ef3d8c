@@ -1,0 +1,68 @@
+package org.proyecto.datatype;
+
+import java.util.List;
+
+import org.proyecto.clases.Noticia;
+import org.proyecto.clases.Publicacion;
+
+public class Helper {
+	
+	public static Noticia convertorDataTypeEntidad(NoticiaDataType data) {
+		
+		Noticia noticiaEntidad = new Noticia();
+		
+		noticiaEntidad.setDescripcion(data.getDescripcion());
+		
+		noticiaEntidad.setTitulo(data.getTitulo());
+
+		
+		//Crear la entidad publicacion
+		List<Publicacion> publicaciones = new List<Publicacion>();
+		
+		publicacion.setId(new Integer(data.getPublicaciones().()));
+		
+		//setear el sexo		
+		desarrolladorEntidad.setSexo(sexo);
+		
+		desarrolladorEntidad.setUsuario(data.getUsuario());
+		
+		return desarrolladorEntidad;
+		
+	}
+	
+	/**
+	 * Convertor de Entidad a DataType
+	 * @param entidad
+	 * @return
+	 */
+	public static DataDesarrollador convertorDataTypeEntidad(Desarrollador entidad) {
+		
+		DataDesarrollador data = new DataDesarrollador();
+		
+		data.setFechaNacimiento(entidad.getFechaNacimiento());
+		
+		data.setPrimerApellido(entidad.getPrimerApellido());
+
+		data.setPrimerNombre(entidad.getPrimerNombre());
+		
+		data.setSegundoApellido(entidad.getSegundoApellido());
+		
+		data.setSegundoNombre(entidad.getSegundoNombre());
+		
+		//Crear la entidad sexo
+		DataSexo dataSexo = new DataSexo();
+		
+		dataSexo.setIdSexo(entidad.getSexo().getIdSexo().toString());
+		
+		dataSexo.setDescripcion(entidad.getSexo().getDescripcion());
+		
+		//setear el sexo		
+		data.setSexo(dataSexo);
+		
+		data.setUsuario(data.getUsuario());
+		
+		return data;
+		
+	}
+
+}

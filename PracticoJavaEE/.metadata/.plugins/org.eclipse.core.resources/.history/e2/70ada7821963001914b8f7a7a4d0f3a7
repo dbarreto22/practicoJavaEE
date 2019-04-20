@@ -1,0 +1,41 @@
+package com.proyectoJee.SOAP;
+
+import java.awt.List;
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.DAO.PublicacionDaoImp;
+
+import com.practico.*;
+
+public class NoticiaServiceImp implements NoticiaServiceI{
+	
+	NoticiaDaoImp noticiaDaoI;
+	
+	PublicacionDaoImp publicacionDao;
+	
+	 
+    public List<Noticia> listarNoticias() {
+        return noticiaDaoI.obtenerNoticias();
+    }
+ 
+    public List<Publicacion>  listarPublicaciones(){
+    	return publicacionDao.obtenerPublicaciones();
+    }
+    
+    public void crearNoticia(Noticia noticia) {
+    	
+	
+    	
+    	noticiaDaoI.adicionarNoticia(noticia);
+    }
+    
+    public void crearPublicacion(Noticia noticia, Publicacion publicacion) {
+    	
+
+    	
+    	publicacionDao.adicionarPublicacion(noticia, publicacion);
+    	
+    	
+    }
+
+}

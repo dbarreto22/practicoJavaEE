@@ -1,0 +1,26 @@
+package com.proyectoJee.SOAP;
+
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.DAO.PublicacionDaoImp;
+
+
+
+public class NoticiaServiceImp implements NoticiaServiceI{
+	
+private static Map<Integer,Noticia> noticias = new HashMap()<>();
+	
+	@Override
+	public boolean addNoticia(Noticia n) {
+		if(noticias.get(n.getId()) != null) return false;
+		noticias.put(n.getId(), n);
+		return true;
+	}
+
+	
+}

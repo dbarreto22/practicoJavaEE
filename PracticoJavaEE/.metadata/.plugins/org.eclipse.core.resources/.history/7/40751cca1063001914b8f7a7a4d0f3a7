@@ -1,0 +1,15 @@
+package org.proyectoJee.SOAP;
+
+import java.util.List;
+
+import com.practico.entyties.Publicacion;
+
+public class NoticiaSoap {
+	
+	private long seguimiento;
+	private String titulo;
+	private String descripcion;
+	private List<Publicacion> publicaciones;
+	
+
+}

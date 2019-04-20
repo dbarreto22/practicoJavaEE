@@ -1,0 +1,5 @@
+package com.practico.JMS;
+
+public class MensajeQueue {
+
+}

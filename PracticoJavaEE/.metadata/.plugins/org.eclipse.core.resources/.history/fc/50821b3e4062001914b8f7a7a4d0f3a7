@@ -1,0 +1,184 @@
+package org.proyectoJee.beans;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.enterprise.inject.Model;
+
+import java.io.Console;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
+
+import org.jboss.logging.Logger;
+
+import com.practico.datatype.NoticiaDataType;
+import com.practico.datatype.PublicacionDataType;
+import com.practico.negocio.NegocioI;
+
+//@Named("noticiaJSF")
+// @ManagedBean(name="noticiaJSF")
+//@ViewScoped
+@Model
+@RequestScoped
+public class noticiaBeanManager implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private static final Logger logger = org.jboss.logging.Logger.getLogger(noticiaBeanManager.class);
+
+	@EJB
+	private NegocioI negocio;
+
+	private String titulo;
+
+	private String descripcion;
+
+	// Lista para guardar as noticias
+	private List<NoticiaDataType> listaNoticias = new ArrayList<>();
+	
+	List<PublicacionDataType> dataPublicacion = new ArrayList<>();
+
+	// Vamos a crear un data noticia en la clase controladora para utilizarlo
+	// directamente desde la Pagina JSF
+	private NoticiaDataType dataNoticia;
+
+	/**
+	 * Vamos a inicializar el desarrollador Este metodo siempre se ejecuta luego del
+	 * constructor de la clase controladora
+	 */
+	@PostConstruct
+	public void init() {
+
+		// vamos a mapear el objeto desarrollador con JSF
+		this.dataNoticia = new NoticiaDataType();
+
+		// listo !!!
+		this.listaNoticias = negocio.listarNoticias();
+
+		logger.info("Init");
+	}
+
+	/**
+	 * Accion que se llama desde la pagina JSF, teniendo instanciado las propiedades
+	 * de la clase.
+	 * 
+	 * @return
+	 */
+	public String agregarNoticia() {
+
+		logger.info("Adicionar Desarrollador");
+
+		logger.info("Titulo: " + this.dataNoticia.getTitulo() + " Descripcion: " + this.dataNoticia.getDescripcion());
+		/*
+		 * //Validaciones de Pantalla de Presentación del lado del servidor Ej: Sexo
+		 * if(this.desarrollador.getSexo().getIdSexo().equals("-1")) {
+		 * 
+		 * //mensaje de error y detener la continuidad del programa
+		 * FacesContext.getCurrentInstance().addMessage(null, new
+		 * FacesMessage(FacesMessage.SEVERITY_ERROR, "Sexo requerido", null));
+		 * 
+		 * return "error";
+		 * 
+		 * }
+		 */
+
+		// Llamar al EJB Local para adicionar el desarrollador
+
+		// Setear el atributo usuario
+		// Este atributo es para difetenciar los desarrolladores creados por cada
+		// usuario del sistema
+		// Es por ello que no se ingresa desde el formulario
+		// desarrollador.setUsuario("mifonseca");
+
+		negocio.ingresarNoticia(dataNoticia);
+		
+
+		// Resert de la instancia actual, para crear nuevo desarrollador
+		dataNoticia = new NoticiaDataType();
+		
+		
+
+		// Obtener el listado de objetos
+		// listo !!
+		// listaNoticias = negocio.listarNoticias();
+
+		return "success";
+	}
+
+	public String navegar() {
+
+		return "listar";
+	}
+
+	public List<NoticiaDataType> listarNoticias() {
+		
+		
+
+		// Validaciones de Pantalla de Presentación del lado del servidor Ej: Sexo
+		if (!this.listaNoticias.isEmpty()) {
+			
+			this.listaNoticias = negocio.listarNoticias();
+			
+			logger.info(listaNoticias);
+			return listaNoticias;
+			
+		} else {
+
+			// mensaje de error y detener la continuidad del programa
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "No existen datos a mostrar", null));
+
+			return null;
+
+		}
+	}
+
+	public noticiaBeanManager() {
+		super();
+	}
+
+	public NoticiaDataType getNoticia() {
+		return dataNoticia;
+	}
+
+	public void setNoticia(NoticiaDataType noticia) {
+		this.dataNoticia = noticia;
+	}
+
+	public List<NoticiaDataType> getListaNoticias() {
+		return listaNoticias;
+	}
+
+	public void setListaNoticias(List<NoticiaDataType> listaNoticias) {
+		this.listaNoticias = listaNoticias;
+	}
+	
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+}

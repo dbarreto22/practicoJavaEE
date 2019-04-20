@@ -1,0 +1,65 @@
+package com.practico.JMS;
+
+import java.util.Properties;
+
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
+public class MensajeQueue {
+	
+	public static void main(String[] args) throws Exception {
+		// Usuario y password para conectarse al servidor JNDI y al Queue
+		String usuario = "guest";
+		String contrasena = "guest";
+
+		// Propiedades para crear el contexto: clase factorÃ­a, url del servidor JNDI y credenciales
+		Properties env = new Properties();
+		env.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
+		env.put(Context.PROVIDER_URL, "http-remoting://localhost:8082");
+		env.put(Context.SECURITY_PRINCIPAL, usuario);
+		env.put(Context.SECURITY_CREDENTIALS, contrasena);
+
+		// El objeto InitialContext permite obtener la referencias de los objetos registrado en el Ã¡bol JNDI
+		InitialContext ic = new InitialContext(env);
+
+		// Objetos a obtener para usar JMS: 
+		// - QueueConnectionFactory
+		// - QueueConection
+		// - Queue
+		// - QueueSession
+		// - QueueSubscriber
+		// - QueuePublisher
+		QueueConnectionFactory connectionFactory = (QueueConnectionFactory) ic.lookup("jms/RemoteConnectionFactory");
+		QueueConnection connection = connectionFactory.createQueueConnection(usuario, contrasena);
+		
+		// Obtener el Queue en el cual se publicarÃ¡n y del cual se recibirÃ¡n los mensajes
+		javax.jms.Queue queue = (javax.jms.Queue) ic.lookup("jms/queue/test");
+
+		// Preparar el publicador y subscriptor al Queue
+		Receiver receiver1 = new Receiver(connection, queue);
+		Receiver receiver2 = new Receiver(connection, queue);
+		Sender sender = new Sender(connection, queue);
+		
+		// Inicializar la recepciÃ³n y envÃ­o de los mensajes
+		connection.start();
+
+		// Empezar a enviar mensajes en el Queue (y a recibirlos)
+		Thread thread = new Thread(sender);		
+		thread.start();
+		// Esperar a que el enviador termine de enviar mensajes
+		thread.join();
+
+		// Parar el envÃ­o y recepciÃ³n de mensajes
+		connection.stop();
+		
+		// Terminar liberando los recursos
+		receiver1.close();
+		receiver2.close();
+		sender.close();		
+		connection.close();
+		ic.close();
+	}
+
+}

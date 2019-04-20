@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="pageTitle">Practico de Java EE</ui:define>
+
+	<ui:define name="head"></ui:define>
+
+	<ui:define name="titulo">Practico de Java EE</ui:define>
+
+	<!-- Contenido de la Pagina JSF con algunos componentes de PrimeFaces -->
+	<h:form id="form">
+
+		<!--\#{sampleBean.value} -->
+		<h:dataTable value="\#{noticiaBeanManager.listarNoticias}"
+			var="noticia">
+			<h:column>
+				<f:facet name="header">Titulo</f:facet>    				
+      			#{noticia.titulo}
+   			</h:column>
+			<h:column>
+				<f:facet name="header">Descripcion</f:facet>
+				"#{noticia.Descripcion}" 
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+
+</ui:composition>
+
+
+
+
+

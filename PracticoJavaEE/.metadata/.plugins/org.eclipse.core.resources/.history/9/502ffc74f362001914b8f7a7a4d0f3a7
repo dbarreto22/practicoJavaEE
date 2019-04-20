@@ -1,0 +1,86 @@
+package com.practico.cliente;
+
+import java.util.Properties;
+
+import javax.jms.JMSException;
+import javax.jms.Queue;
+import javax.jms.QueueConnection;
+import javax.jms.QueueConnectionFactory;
+import javax.jms.QueueSender;
+import javax.jms.QueueSession;
+import javax.jms.TextMessage;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class MessageSender {
+	
+	private Context context = null;
+	private QueueConnectionFactory factory = null;
+	private QueueConnection connection = null;
+	private Queue queue = null;
+	private QueueSession session = null;
+	private QueueSender sender = null;
+
+	public static void main(String[] args) {
+
+	MessageSender sender = new MessageSender();
+	sender.sendmessage();
+
+	}
+
+	public void sendmessage() {
+		
+		Properties initialProperties = new Properties();
+		
+		initialProperties.setProperty("java.naming.factory.initial","org.jnp.interfaces.NamingContextFactory");
+		
+		initialProperties.setProperty("java.naming.factory.url.pkgs","org.jboss.naming");
+		
+		initialProperties.setProperty("java.naming.provider.url","127.0.0.1:1099");
+		
+		try {
+			
+		context = new InitialContext(initialProperties);
+		
+		factory = (QueueConnectionFactory) context.lookup("/ConnectionFactory");
+		
+		queue = (Queue) context.lookup("/queue/DLQ");
+		
+		connection = factory.createQueueConnection();
+		
+		session = connection.createQueueSession(false, QueueSession.AUTO_ACKNOWLEDGE);
+		
+		sender = session.createSender(queue);
+		
+		connection.start();
+		
+		int count = 0;
+		
+		while (count < 10) { 
+			TextMessage textMessage = session.createTextMessage("This is message from client :" + count); 
+			
+			sender.send(textMessage); 
+			
+			Thread.sleep(3000); count++; } System.out.println("Messages were sent...");
+			
+			connection.close(); 
+			
+		}
+		catch (NamingException e) { 
+			
+			e.printStackTrace(); 
+
+		}catch (JMSException e) { 
+			
+			e.printStackTrace();
+			
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace(); 
+			} 
+		} 
+		}
+	}
+
+}

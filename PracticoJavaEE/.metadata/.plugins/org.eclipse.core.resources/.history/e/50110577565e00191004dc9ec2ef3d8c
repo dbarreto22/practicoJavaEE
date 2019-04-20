@@ -1,0 +1,27 @@
+package org.proyecto.DAO;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.proyecto.clases.Noticia;
+
+@Stateless
+public class NoticiaDaoImp implements NoticiaDaoI{
+	
+	@PersistenceContext(unitName="practicoJava")
+	EntityManager em;
+	
+	@Override
+	public void adicionarNoticia(Noticia noticia) {
+		try {
+			
+			em.persist(noticia);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+}

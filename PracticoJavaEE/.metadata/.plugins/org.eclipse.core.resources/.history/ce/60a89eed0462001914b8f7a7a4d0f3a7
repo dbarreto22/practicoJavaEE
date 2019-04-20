@@ -1,0 +1,18 @@
+package com.practico.negocio;
+
+import java.util.List;
+
+import org.proyecto.clases.Noticia;
+
+import com.practico.datatype.NoticiaDataType;
+import com.practico.datatype.PublicacionDataType;
+
+public interface NegocioI {
+	
+	public void ingresarNoticia(NoticiaDataType noticia);
+	
+	public void ingresarPublicacion (NoticiaDataType noticiaData, PublicacionDataType publicacionData);
+	
+	public List<NoticiaDataType> listarNoticias();
+
+}

@@ -1,0 +1,30 @@
+package com.proyectoJee.SOAP;
+
+public class NoticiaServiceImp implements NoticiaServiceI{
+	
+	 
+    public List<Noticia> listarNoticias() {
+        return noticiaDaoI.obtenerNoticias();
+    }
+ 
+    public List<Publicacion>  listarPublicaciones(){
+    	return publicacionDao.obtenerPublicaciones();
+    }
+    
+    public void crearNoticia(Noticia noticia) {
+    	
+	
+    	
+    	noticiaDaoI.adicionarNoticia(noticia);
+    }
+    
+    public void crearPublicacion(Noticia noticia, Publicacion publicacion) {
+    	
+
+    	
+    	publicacionDao.adicionarPublicacion(noticia, publicacion);
+    	
+    	
+    }
+
+}

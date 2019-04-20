@@ -1,0 +1,53 @@
+package com.proyectoJee.SOAP;
+
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.jws.WebService;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.DAO.PublicacionDaoI;
+import com.practico.DAO.PublicacionDaoImp;
+import com.practico.datatype.Helper;
+import com.practico.datatype.NoticiaDataType;
+import com.practico.datatype.PublicacionDataType;
+import com.practico.entyties.Noticia;
+import com.practico.entyties.Publicacion;
+
+
+public class NoticiaService {
+	
+    NoticiaDaoImp noticiaDaoI;
+
+    PublicacionDaoImp publicacionDao;
+
+ /*
+    public List<Noticia> listarNoticias() {
+        return noticiaDaoI.obtenerNoticias();
+    }
+ 
+    public List<Publicacion>  listarPublicaciones(){
+    	return publicacionDao.obtenerPublicaciones();
+    }
+    
+    public void crearNoticia(Noticia noticia) {
+    	
+	
+    	
+    	noticiaDaoI.adicionarNoticia(noticia);
+    }
+    
+    public void crearPublicacion(Noticia noticia, Publicacion publicacion) {
+    	
+
+    	
+    	publicacionDao.adicionarPublicacion(noticia, publicacion);
+    	
+    	
+    }*/
+
+}

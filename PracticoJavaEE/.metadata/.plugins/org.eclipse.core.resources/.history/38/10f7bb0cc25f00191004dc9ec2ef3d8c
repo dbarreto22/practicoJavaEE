@@ -1,0 +1,10 @@
+package org.proyecto.negocio;
+
+import org.proyecto.clases.Noticia;
+import org.proyecto.datatype.NoticiaDataType;
+
+public interface NegocioI {
+	
+	public void ingresarNoticia(NoticiaDataType noticia);
+
+}

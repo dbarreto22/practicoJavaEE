@@ -1,0 +1,9 @@
+package org.proyecto.negocio;
+
+import org.proyecto.clases.Noticia;
+
+public interface NegocioI {
+	
+	public void ingresarNoticia(Noticia noticia);
+
+}

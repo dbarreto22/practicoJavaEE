@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:composition >
+	<ui:define name="pageTitle">Noticias</ui:define>
+	<ui:define name="pageHeader">Header</ui:define>
+	<ui:define name="body">
+		<form jsfc="h:form" id="Form">
+			<h:dataTable value="#{noticiaBeanManager.listarNoticias}"
+				var="dataNoticia">
+				<h:column>
+					<f:facet name="header">Titulosssss</f:facet>
+					<h:outputText value="#{dataNoticia.titulo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descripcion</f:facet>
+					<h:outputText value="#{dataNoticia.Descripcion}" />
+				</h:column>
+			</h:dataTable>
+			-->
+		</form>
+	</ui:define>
+</ui:composition>
+
+</html>

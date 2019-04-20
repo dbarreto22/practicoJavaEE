@@ -1,0 +1,73 @@
+package com.proyectoJee.SOAP;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+import com.practico.entyties.Publicacion;
+import com.sun.xml.bind.XmlAccessorFactory;
+
+
+public class Noticia implements Serializable{
+	
+	private static final long serialVersionUID = -5577579081118070434L;
+	
+	private long id;
+	private long seguimiento;
+	private String titulo;
+	private String descripcion;
+	private List<Publicacion> publicaciones;
+	
+	public Noticia() {
+		super();
+	}
+	
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public long getSeguimiento() {
+		return seguimiento;
+	}
+	public void setSeguimiento(long seguimiento) {
+		this.seguimiento = seguimiento;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public List<Publicacion> getPublicaciones() {
+		return publicaciones;
+	}
+	public void setPublicaciones(List<Publicacion> publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Noticia [id=" + id + ", seguimiento=" + seguimiento + ", titulo=" + titulo + ", descripcion="
+				+ descripcion + ", publicaciones=" + publicaciones + "]";
+	}
+	
+	
+	
+	
+
+}

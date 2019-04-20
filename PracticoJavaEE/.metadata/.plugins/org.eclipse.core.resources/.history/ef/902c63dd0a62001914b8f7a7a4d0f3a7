@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/plantilla/template.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:outputLabel value=" " for="btnListarN" />
+	<h:commandButton action="\#{noticiaBeanManager.navegar}" id="btnAdd"
+		value="Ver noticias" />
+
+
+
+</ui:composition>
