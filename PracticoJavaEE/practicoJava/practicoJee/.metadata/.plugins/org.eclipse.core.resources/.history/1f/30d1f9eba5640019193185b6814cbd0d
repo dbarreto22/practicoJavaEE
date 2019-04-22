@@ -1,0 +1,81 @@
+package com.practico.DAO;
+
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
+
+import org.jboss.logging.Logger;
+
+import com.practico.entyties.Noticia;
+import com.practico.entyties.Publicacion;
+
+@Stateless
+public class PublicacionDaoImp implements PublicacionDaoI{
+	
+	public static final Logger logger = Logger.getLogger(Publicacion.class);
+	
+	@PersistenceContext(unitName="practicoJava", type=PersistenceContextType.TRANSACTION)
+	EntityManager em;
+	
+	@Override
+	public void adicionarPublicacion(Publicacion publicacion) {
+		try {
+			
+			Noticia n = publicacion.getNoticia();
+			em.persist(publicacion); 
+			
+			n.getPublicaciones().add(publicacion);
+
+			em.merge(n);
+			
+			
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+	}
+	
+	
+	@Override
+	public Publicacion findById(long id) {
+		try {
+			Query q = em.createNamedQuery("Publicacion.getById").setParameter("id", id);
+			
+			Publicacion publicacion = (Publicacion) q.getSingleResult();
+			
+			return publicacion;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			logger.error(e);
+			throw e;
+		}
+
+	}
+	
+	
+	@Override
+	public List<Publicacion> obtenerPublicaciones(){
+		try {
+			
+			Query q = em.createNamedQuery("Publicacion.getAll");
+			List<Publicacion> publicaciones = (List<Publicacion>)q.getResultList();
+			
+			return publicaciones;
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error(e);
+			throw e;
+		}
+		
+		
+	}
+
+}

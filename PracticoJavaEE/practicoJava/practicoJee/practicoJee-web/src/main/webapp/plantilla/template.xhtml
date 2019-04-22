@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	
+	<!-- Encabezado de la página -->
+	<h:head>
+	
+		<title><ui:insert name="pageTitle"> Curso de Java EE </ui:insert></title>
+		
+		<h:outputScript type="text/javascript"></h:outputScript>
+			
+		<ui:insert name="head"></ui:insert>
+		
+	</h:head>
+	
+	<!-- Cuerpo de la página -->
+	<h:body>
+			
+		<section class="contenedor">
+			
+			<article class="blockConten">
+				
+				<h2><ui:insert name="titulo">Título</ui:insert></h2>	
+												
+				<ui:insert name="contenido">contenido</ui:insert>
+				
+			</article>
+					
+			<div>
+				<ui:insert name="piePag">piePag</ui:insert>
+			</div>
+			
+		</section>
+		
+	</h:body>
+
+</html>

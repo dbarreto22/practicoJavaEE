@@ -1,0 +1,54 @@
+package com.practico.datatype;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.practico.entyties.Noticia;
+import com.practico.entyties.Publicacion;
+
+public class Helper {
+
+	
+
+	/**
+	 * Convertor de Entidad a DataType
+	 * 
+	 * @param entidad
+	 * @return
+	 */
+	public static Noticia ToEntidadN(NoticiaDataType data) {
+		
+		List <Publicacion> publicaciones = new ArrayList<Publicacion>();
+		
+		data.getPublicaciones().forEach(pub -> {
+        	
+			publicaciones.add(new Publicacion(Long.parseLong(pub.getId()), pub.getTipo(), pub.getUrl(), new Noticia()));
+        });
+
+		Noticia entidad = new Noticia(data.getId(),data.getTitulo(), data.getDescripcion(), publicaciones);
+
+
+		return entidad;
+
+	}
+
+	public static PublicacionDataType ToEntidadP(Publicacion entidad) {
+
+		PublicacionDataType data = new PublicacionDataType();
+
+		data.setId(Long.toString(entidad.getId()));
+
+		data.setTipo(entidad.getTipo());
+
+		data.setUrl(entidad.getUrl());
+
+		Noticia n = new Noticia();
+
+		data.setNoticia(n.toDataType());
+
+		return data;
+
+	}
+
+	
+}

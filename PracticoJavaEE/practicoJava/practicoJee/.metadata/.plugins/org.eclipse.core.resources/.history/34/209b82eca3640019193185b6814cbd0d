@@ -1,0 +1,137 @@
+package com.practico.entyties;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
+import com.practico.datatype.NoticiaDataType;
+import com.practico.datatype.PublicacionDataType;
+
+/**
+ * Entity implementation class for Entity: Publicacion
+ *
+ */
+@Entity
+@NamedQueries({
+@NamedQuery(name="Publicacion.getAll", query="SELECT p FROM Publicacion p"),
+@NamedQuery(name="Publicacion.getById", query="SELECT p FROM Publicacion p WHERE p.id = :id")
+})
+public class Publicacion implements Serializable {
+
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name="IDT_PUBLICACION")
+	private long id;
+	
+	@Column(name="TIPO")
+	private String tipo;
+	
+	@Column(name="URL")
+	private String url;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Noticia noticia;
+
+	public Publicacion() {
+		super();
+	}
+	
+	
+
+	public Publicacion(long id, String tipo, String url, Noticia noticia) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.url = url;
+		this.noticia = noticia;
+	}
+
+
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Noticia getNoticia() {
+		return noticia;
+	}
+
+	public void setNoticia(Noticia noticia) {
+		this.noticia = noticia;
+	}
+
+	@Override
+	public String toString() {
+		return "Publicacion [id=" + id + ", tipo=" + tipo + ", url=" + url + ", noticia=" + noticia + "]";
+	}
+	
+	
+	public PublicacionDataType toDataType() {
+				
+		
+		List <PublicacionDataType> dtPub = new ArrayList<PublicacionDataType>();
+		
+		List <Publicacion> Pub = this.noticia.getPublicaciones();
+		
+        NoticiaDataType not = new NoticiaDataType();
+        
+        PublicacionDataType dtPublicacion = new PublicacionDataType(Long.toString(id), tipo, url, not);
+
+        return dtPublicacion;
+    }
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Publicacion other = (Publicacion) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
+	
+	
+	
+	
+   
+}

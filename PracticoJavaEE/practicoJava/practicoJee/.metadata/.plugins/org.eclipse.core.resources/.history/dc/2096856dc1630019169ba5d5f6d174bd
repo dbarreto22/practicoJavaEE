@@ -1,0 +1,9 @@
+package com.proyectoJee.REST;
+
+import javax.ws.rs.core.Application;
+import javax.ws.rs.ApplicationPath;
+
+@ApplicationPath("/service")
+public class RestApplication extends Application{
+
+}

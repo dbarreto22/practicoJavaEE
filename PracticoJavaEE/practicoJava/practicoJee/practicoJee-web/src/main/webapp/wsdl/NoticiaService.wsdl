@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://SOAP.proyectoJee.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://SOAP.proyectoJee.com" xmlns:intf="http://SOAP.proyectoJee.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://SOAP.proyectoJee.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="crearNoticia">
+    <complexType/>
+   </element>
+   <element name="crearNoticiaResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="crearNoticiaResponse">
+
+      <wsdl:part element="impl:crearNoticiaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="crearNoticiaRequest">
+
+      <wsdl:part element="impl:crearNoticia" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="NoticiaService">
+
+      <wsdl:operation name="crearNoticia">
+
+         <wsdl:input message="impl:crearNoticiaRequest" name="crearNoticiaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:crearNoticiaResponse" name="crearNoticiaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="NoticiaServiceSoapBinding" type="impl:NoticiaService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="crearNoticia">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="crearNoticiaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="crearNoticiaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="NoticiaServiceService">
+
+      <wsdl:port binding="impl:NoticiaServiceSoapBinding" name="NoticiaService">
+
+         <wsdlsoap:address location="http://localhost:8080/practicoJee-web/services/NoticiaService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

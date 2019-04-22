@@ -1,0 +1,196 @@
+package com.practico.negocio;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.ejb.Singleton;
+
+import org.jboss.logging.Logger;
+
+import com.practico.DAO.NoticiaDaoI;
+import com.practico.DAO.PublicacionDaoI;
+import com.practico.datatype.Helper;
+import com.practico.datatype.NoticiaDataType;
+import com.practico.datatype.PublicacionDataType;
+import com.practico.entyties.Noticia;
+import com.practico.entyties.Publicacion;
+
+
+@Singleton
+public class NegocioImp implements NegocioI{
+	
+	public static final Logger logger = Logger.getLogger(NegocioImp.class);
+	
+	@EJB
+	NoticiaDaoI noticiadao;
+	
+	@EJB
+	PublicacionDaoI publicacionDao;
+	
+	@Override
+	public void ingresarNoticia(NoticiaDataType noticia) {
+		
+		try {
+			
+			logger.info(noticia);
+			
+			Noticia noticiaEntidad = Helper.convertorDataTypeEntidadNoticia(noticia);
+			
+			
+				noticiadao.adicionarNoticia(noticiaEntidad);
+			
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			logger.error(e);
+		}
+		
+	}
+	
+	@Override
+	public void ingresarPublicacion (NoticiaDataType noticiaData, PublicacionDataType publicacionData) {
+		
+		try {
+			logger.info(publicacionData);
+			
+			Noticia noticiaentidad = Helper.convertorDataTypeEntidadNoticia(noticiaData);			
+			
+			Publicacion publicacionEntidad = Helper.convertorDataTypeEntidadpublicacion(publicacionData);
+			
+			
+			publicacionDao.adicionarPublicacion(noticiaentidad, publicacionEntidad);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error(e);
+		}
+		
+	}
+	
+
+	
+	
+	@Override
+	public List<NoticiaDataType> listarNoticias(){
+		
+		try {
+			
+			List<Noticia> listaEntidad = noticiadao.obtenerNoticias();
+			
+			List<NoticiaDataType> listaDataNoticia = new ArrayList<>();
+			
+			//verificar que la lista tenga al menos un elemento
+			if(listaEntidad!=null && listaEntidad.size()>0) {
+				
+				//Utilizar la pontencialidad de java 8 lambda
+				
+				
+				for(int i = 0 ; i < listaEntidad.size(); i++ ) {
+					listaDataNoticia.add(Helper.convertorDataTypeEntidadNoticia(listaEntidad.get(i)));
+				}
+				return listaDataNoticia;
+			}
+			
+	
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error(e);
+		}
+		return null;
+		
+
+	}
+	
+
+	@Override
+	public List<PublicacionDataType> listarPublicaciones(){
+		
+		try {
+			
+			List<Publicacion> listaEntidad = publicacionDao.obtenerPublicaciones();
+			
+			List<PublicacionDataType> listaDataPublicacion = new ArrayList<>();
+			
+			//verificar que la lista tenga al menos un elemento
+			if(listaEntidad!=null && listaEntidad.size()>0) {
+				
+				//Utilizar la pontencialidad de java 8 lambda
+				
+				for(int i =0;i< listaEntidad.size();i++) {
+					listaDataPublicacion.add(Helper.convertorDataTypeEntidadPublicacion(listaEntidad.get(i)));
+				}
+
+				return listaDataPublicacion;
+			}
+			
+	
+		} catch (Exception e) {
+			// TODO: handle exception
+	//		logger.error(e);
+		}
+		return null;
+		
+
+	}
+	
+	@Override
+	public PublicacionDataType getBySeguimientoP(long id) {
+		
+		PublicacionDataType dataPublicacion = new PublicacionDataType();
+		
+		try {
+			
+			Publicacion publicacion = publicacionDao.findById(id);
+			
+			if (publicacion != null) {
+				
+				dataPublicacion = Helper.convertorDataTypeEntidadPublicacion(publicacion);
+				
+				
+			}
+			
+	
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			logger.error(e);
+		}
+		
+		return dataPublicacion;
+		
+	}
+	
+	@Override
+	public NoticiaDataType getBySeguimientoN(long seguimiento) {
+		
+		NoticiaDataType dataNoticia = new NoticiaDataType();
+		
+		try {
+			
+			Noticia noticia = noticiadao.findByseguimiento(seguimiento);
+			
+			if (noticia != null) {
+				
+				dataNoticia = Helper.convertorDataTypeEntidadNoticia(noticia);
+				
+				
+			}
+			
+	
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			logger.error(e);
+		}
+		
+		return dataNoticia;
+		
+	}
+
+
+}

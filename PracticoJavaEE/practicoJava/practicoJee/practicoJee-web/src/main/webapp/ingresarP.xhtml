@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h2>Ingresar Publicaciones</h2>
+
+		<h2>Seleccione Noticia</h2>
+		<h:outputLabel value="Noticia" for="idSelOneMenuNoticia" />
+		<h:selectOneMenu id="idSelOneMenuNoticia" style="width:125px">
+			<f:selectItem itemLabel="Seleccione..." itemValue="0" />
+			<f:selectItems value="#{noticiaBeanManager.listaNoticias}" var="noticia"
+				itemLabel="#{noticia.descripcion}" itemValue="#{noticia.id}" />
+
+		</h:selectOneMenu>
+
+		<h2>Ingrese Datos Publicaciones</h2>
+		<h:form id="form">
+			<h:outputLabel value="Tipo" for="idTxtTipo" />
+			<h:inputText required="true" value="#{noticiaBeanManager.tipo}"
+				id="idTxtTipo"></h:inputText>
+
+			<h:outputLabel value="URL" for="idTxtUrl" />
+			<h:inputText required="true" value="#{noticiaBeanManager.url}"
+				id="idTxtUrl"></h:inputText>
+
+			<h:outputLabel value=" " for="btnAdd" />
+			<h:commandButton action="#{noticiaBeanManager.agregarPublicacion}"
+				id="btnAdd" value="Agregar Publicacion" />
+		</h:form>
+	</ui:define>
+</ui:composition>

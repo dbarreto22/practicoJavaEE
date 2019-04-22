@@ -1,0 +1,105 @@
+package com.practico.datatype;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.practico.entyties.Noticia;
+import com.practico.entyties.Publicacion;
+
+public class Helper {
+
+	public static Noticia convertorDataTypeEntidadNoticia(NoticiaDataType data, String s) {
+
+		Noticia noticiaEntidad = new Noticia();
+
+		noticiaEntidad.setId(data.getId());
+
+		noticiaEntidad.setDescripcion(data.getDescripcion());
+
+		noticiaEntidad.setTitulo(data.getTitulo());
+		if (s != "crear Notica") {
+			// Crear la entidad publicacion
+			List<Publicacion> publicaciones = null;
+
+			if (data.getPublicaciones().size() > 0 && data.getPublicaciones() != null) {
+
+				for (int i = 0; i < data.getPublicaciones().size(); i++) {
+					publicaciones.add(convertorDataTypeEntidadpublicacion(data.getPublicaciones().get(i)));
+				}
+			}
+
+		}
+
+		noticiaEntidad.setPublicaciones(publicaciones);
+
+		return noticiaEntidad;
+
+	}
+
+	/**
+	 * Convertor de Entidad a DataType
+	 * 
+	 * @param entidad
+	 * @return
+	 */
+	public static NoticiaDataType convertorDataTypeEntidadNoticia(Noticia entidad) {
+
+		NoticiaDataType data = new NoticiaDataType();
+
+		data.setId(entidad.getId());
+
+		data.setDescripcion(entidad.getDescripcion());
+
+		data.setTitulo(entidad.getTitulo());
+
+		List<PublicacionDataType> publicaciones = null;
+
+		if (entidad.getPublicaciones() != null && entidad.getPublicaciones().size() > 0) {
+
+			for (int i = 0; i < entidad.getPublicaciones().size(); i++) {
+				publicaciones.add(convertorDataTypeEntidadPublicacion(entidad.getPublicaciones().get(i)));
+			}
+		}
+		data.setPublicaciones(publicaciones);
+
+		return data;
+
+	}
+
+	public static PublicacionDataType convertorDataTypeEntidadPublicacion(Publicacion entidad) {
+
+		PublicacionDataType data = new PublicacionDataType();
+
+		data.setId(entidad.getId());
+
+		data.setTipo(entidad.getTipo());
+
+		data.setUrl(entidad.getUrl());
+
+		Noticia n = new Noticia();
+
+		data.setNoticia(convertorDataTypeEntidadNoticia(n));
+
+		return data;
+
+	}
+
+	public static Publicacion convertorDataTypeEntidadpublicacion(PublicacionDataType data) {
+
+		Publicacion p = new Publicacion();
+
+		p.setId(data.getId());
+
+		p.setTipo(data.getTipo());
+
+		p.setUrl(data.getUrl());
+
+		NoticiaDataType n = new NoticiaDataType();
+
+		p.setNoticia(convertorDataTypeEntidadNoticia(n));
+
+		return p;
+
+	}
+
+}

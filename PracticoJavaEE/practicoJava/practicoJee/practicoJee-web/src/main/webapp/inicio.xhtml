@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<h:form>
+		<h:commandLink action="\#{noticiaBeanManager.navegar}" value="Listar Noticias">
+			<f:param value="listar" />
+		</h:commandLink>
+
+		<!--
+   <h:commandLink action = "#{navigationController.showPage}" value = "Page2">
+      <f:param name = "pageId" value = "2" />
+   </h:commandLink>
+   <h:commandLink action = "#{navigationController.showPage}" value = "Home">
+      <f:param name = "pageId" value = "3" />
+   </h:commandLink>-->
+	</h:form>
+
+
+
+</ui:composition>

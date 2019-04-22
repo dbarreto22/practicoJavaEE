@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h2>Ingresar Noticias</h2>
+		<h:form id="form">
+			<h:outputLabel value="Titulo" for="idTxtTitulo" />
+			<h:inputText required="true" value="#{noticiaBeanManager.titulo}"
+				id="idTxtTitulo"></h:inputText>
+
+			<h:outputLabel value="Descripcion" for="idTxtDescripcion" />
+			<h:inputText required="true"
+				value="#{noticiaBeanManager.descripcion}" id="idTxtDescripcion"></h:inputText>
+
+			<h:outputLabel value=" " for="btnAdd" />
+			<h:commandButton action="#{noticiaBeanManager.agregarNoticia}"
+				id="btnAdd" value="Agregar Noticia" />
+		</h:form>
+	</ui:define>
+</ui:composition>
