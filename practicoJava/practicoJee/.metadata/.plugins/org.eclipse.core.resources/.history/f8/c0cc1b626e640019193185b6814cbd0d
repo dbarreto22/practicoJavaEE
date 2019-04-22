@@ -1,0 +1,141 @@
+package com.practico.entyties;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
+import com.practico.datatype.NoticiaDataType;
+import com.practico.datatype.PublicacionDataType;
+
+/**
+ * Entity implementation class for Entity: Noticia
+ *
+ */
+@Entity
+@NamedQueries({
+@NamedQuery(name="Noticia.getAll", query="SELECT n FROM Noticia n"),
+@NamedQuery(name="Noticia.getById", query="SELECT n FROM Noticia n WHERE n.id = :id")
+})
+public class Noticia implements Serializable {
+
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name="ID")
+	private long id;
+	
+	@Column(name="TITULO")
+	private String titulo;
+	
+	@Column(name="DESCRIPCION")
+	private String descripcion;
+	
+
+
+	@OneToMany
+	private List<Publicacion> publicaciones;
+
+	public Noticia() {
+		super();
+		
+	}
+	
+	
+
+	public Noticia(long id, String titulo, String descripcion, List<Publicacion> publicaciones) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.publicaciones = publicaciones;
+	}
+
+
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	
+	public List<Publicacion> getPublicaciones() {
+		return publicaciones;
+	}
+
+	public void setPublicaciones(List<Publicacion> publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Noticia [id=" + id +  ", titulo=" + titulo + ", descripcion="
+				+ descripcion + ", publicaciones=" + publicaciones + "]";
+	}
+	
+	
+    public NoticiaDataType toDataType() {
+       List <PublicacionDataType> dtPub = new ArrayList<PublicacionDataType>();
+        
+        for (Publicacion publicacion : publicaciones) {
+        	dtPub.add(new PublicacionDataType(Long.toString(id), publicacion.getTipo(), publicacion.getUrl(), publicacion.getNoticia().toDataType()));
+		}
+              
+        
+        NoticiaDataType dtNoticia = new NoticiaDataType(Long.toString(id), titulo, descripcion, dtPub);
+        return dtNoticia;
+    }
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Noticia other = (Noticia) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
+
+	
+	
+	
+   
+}

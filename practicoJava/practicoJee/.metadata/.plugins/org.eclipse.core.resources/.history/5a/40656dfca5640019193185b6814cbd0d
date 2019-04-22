@@ -1,0 +1,90 @@
+package com.proyectoJee.REST;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
+
+import org.apache.camel.Consume;
+import org.jboss.logging.Logger;
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.DAO.PublicacionDaoImp;
+import com.practico.datatype.Helper;
+import com.practico.datatype.NoticiaDataType;
+import com.practico.entyties.Noticia;
+import com.practico.entyties.Publicacion;
+
+@Path("/")
+public class RESTServiceI {
+
+	public static final Logger logger = Logger.getLogger(Noticia.class);
+
+	@PersistenceContext(unitName = "practicoJava", type=PersistenceContextType.TRANSACTION)
+	EntityManager em;
+
+	NoticiaDaoImp noticiaDao = new NoticiaDaoImp();
+
+	PublicacionDaoImp publicacionDao = new PublicacionDaoImp();
+
+	@Context
+	private UriInfo context;
+
+	public RESTServiceI() {
+		super();
+	}
+
+	@GET
+	@Path("/noticias")
+	@Produces({ "application/json" })
+	public List<NoticiaDataType> listarNoticias() {
+
+		Query q = em.createNamedQuery("Noticia.getAll");
+		List<Noticia> noticias = (List<Noticia>) q.getResultList();
+
+		List<NoticiaDataType> listaDataNoticia = new ArrayList<>();
+
+		// verificar que la lista tenga al menos un elemento
+		if (noticias != null && noticias.size() > 0) {
+
+			for (int i = 0; i < noticias.size(); i++) {
+				listaDataNoticia.add(noticias.get(i).toDataType());
+			}
+
+		}
+		return listaDataNoticia;
+	}
+
+	@GET
+	@Path("/pubicaciones")
+	public List<Publicacion> listarPublicaciones() {
+		return null;
+	}
+
+	@POST
+	@Path("/crearNoticia")
+	@Consumes({ "application/json" })
+	public void crearNoticia(NoticiaDataType noticiaData) throws Exception {
+
+		try {
+			Noticia noticia = Helper.ToEntidadN(noticiaData);
+			em.persist(noticia);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error(e);
+		}
+
+	}
+
+}

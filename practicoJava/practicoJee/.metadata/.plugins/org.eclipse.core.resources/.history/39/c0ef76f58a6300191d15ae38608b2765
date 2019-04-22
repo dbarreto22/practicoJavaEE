@@ -1,0 +1,28 @@
+package com.proyectoJee.REST;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.datatype.NoticiaDataType;
+import com.practico.entyties.Noticia;
+import com.practico.negocio.NegocioImp;
+
+public class RESTServiceImp implements RESTServiceI{
+	
+	NegocioImp negocio;
+	
+	@Override
+	 public List<NoticiaDataType> listarNoticias() {
+		
+		
+		 return negocio.listarNoticias();
+	 }
+
+}
+List<DtExamen> examenes = new ArrayList<>();
+examenFacade.findAll().forEach(examen -> {
+    examenes.add(examen.toDataType());
+});
+return examenes;
+}

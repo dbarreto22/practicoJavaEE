@@ -1,0 +1,14 @@
+LaunchTargetManager/configs/practicoJee-web=org.eclipse.launchbar.core.launchTargetType.wst.server\:WildFly 16 at localhost
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.wst.server,WildFly\ 16\ at\ localhost/name=WildFly 16 at localhost
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:New_configuration,org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:,org.eclipse.launchbar.core.descriptorType.default\:New_configuration (1),org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:practicoJee-ear,org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:/WEB-INF/classes/com/proyectoJee/REST/RESTServiceI.java,org.eclipse.launchbar.core.descriptorType.default\:WildFly 16 at localhost,org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:practicoJee-ejb,org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:practicoJee-web
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:New_configuration\ (1)/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:New_configuration/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:WildFly\ 16\ at\ localhost/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:practicoJee-ear/activeLaunchMode=run
+org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:practicoJee-ear/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.wst.server\:WildFly 16 at localhost
+org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:practicoJee-web/activeLaunchMode=run
+org.jboss.tools.wtp.server.launchbar.ModuleDescriptorType\:practicoJee-web/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.wst.server\:WildFly 16 at localhost

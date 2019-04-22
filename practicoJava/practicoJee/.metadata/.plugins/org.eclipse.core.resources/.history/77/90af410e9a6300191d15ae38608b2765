@@ -1,0 +1,5 @@
+package com.practicoJee.CORS;
+
+public class CORSFilter {
+
+}

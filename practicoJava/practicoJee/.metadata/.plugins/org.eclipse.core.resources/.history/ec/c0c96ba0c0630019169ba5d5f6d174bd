@@ -1,0 +1,49 @@
+package com.proyectoJee.REST;
+
+import java.lang.System.Logger.Level;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import org.jboss.logging.Logger;
+
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.datatype.Helper;
+import com.practico.datatype.NoticiaDataType;
+import com.practico.entyties.Noticia;
+import com.practico.negocio.NegocioImp;
+
+public class RESTServiceImp implements RESTServiceI{
+	
+	
+	private NoticiaDaoImp noticiaDao = lookupNoticiaDao();
+	
+	private NoticiaDaoImp lookupNoticiaDao() {
+        try {
+            Context c = new InitialContext();
+            return (NoticiaDaoImp) c.lookup("java:app/practicoJee-web/NoticiaDaoImp");
+        } catch (Exception e) {
+            
+            throw new RuntimeException(e);
+        }
+    }
+	
+	@Override
+	 public List<NoticiaDataType> listarNoticias() {
+		
+		List<NoticiaDataType> noticiasDatas = new ArrayList<>();
+		
+		for (int i = 0; i < noticiaDao.obtenerNoticias().size(); i++) {
+			noticiasDatas.add(Helper.convertorDataTypeEntidadNoticia(noticiaDao.obtenerNoticias().get(i)));
+		}
+		
+
+		
+		 return noticiasDatas;
+	 }
+
+}

@@ -1,0 +1,17 @@
+package com.proyectoJee.REST;
+
+import java.util.List;
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.entyties.Noticia;
+
+public class RESTServiceImp implements RESTServiceI{
+	
+	NoticiaDaoImp noticiaDao;
+	
+	@Override
+	 public List<Noticia> listarNoticias() {
+		 return noticiaDao.obtenerNoticias();
+	 }
+
+}

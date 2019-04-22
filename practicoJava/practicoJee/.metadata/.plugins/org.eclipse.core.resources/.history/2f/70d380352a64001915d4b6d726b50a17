@@ -1,0 +1,60 @@
+package com.practico.datatype;
+
+import java.util.List;
+
+import com.practico.entyties.Publicacion;
+
+public class NoticiaDataType {
+
+	private long id;
+	private String titulo;
+	private String descripcion;
+	private List<Publicacion> publicaciones;
+	
+	
+	public NoticiaDataType() {
+		super();
+	}
+	
+	public NoticiaDataType(long id,String titulo, String descripcion, List<Publicacion> publicaciones) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.publicaciones = publicaciones;
+	}
+	
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public List<Publicacion> getPublicaciones() {
+		return publicaciones;
+	}
+	public void setPublicaciones(List<Publicacion> publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setSeguimiento(long id) {
+		this.id = id;
+	}
+	
+	
+	
+	
+	
+	
+	
+}

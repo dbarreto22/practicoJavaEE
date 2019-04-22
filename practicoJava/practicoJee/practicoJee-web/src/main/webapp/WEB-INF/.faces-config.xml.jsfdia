@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:inicio.xhtml" PATH="inicio.xhtml"
+  SHAPE="64,208,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:inicio.xhtml:0" NAME="item"
+   PATH="inicio.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listar:#{noticiaBeanManager.navegar}:listarNoticias.jsf"
+    NAME="output" PATH="listarNoticias.jsf"
+    TARGET="rules:listarNoticias.jsf"
+    TITLE="#{noticiaBeanManager.navegar}:listar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:listarNoticias.jsf" PATH="listarNoticias.jsf"
+  SHAPE="512,208,50,25" model-entity="JSFProcessGroup"/>
+</PROCESS>

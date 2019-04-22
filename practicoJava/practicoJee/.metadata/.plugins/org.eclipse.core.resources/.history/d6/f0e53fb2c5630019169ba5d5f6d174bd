@@ -1,0 +1,60 @@
+package com.proyectoJee.REST;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+import com.practico.DAO.NoticiaDaoImp;
+import com.practico.DAO.PublicacionDaoImp;
+import com.practico.datatype.Helper;
+import com.practico.datatype.NoticiaDataType;
+import com.practico.entyties.Noticia;
+import com.practico.entyties.Publicacion;
+
+
+
+@Produces("application/json")
+@Consumes("application/json")
+public class RESTServiceI {
+	
+	NoticiaDaoImp noticiaDao;
+	
+	
+    @GET
+    @Path("/noticias")
+    public List<NoticiaDataType> listarNoticias() {
+    	
+    	List<NoticiaDataType> noticiasDatas = new ArrayList<>();
+		
+		for (int i = 0; i < noticiaDao.obtenerNoticias().size(); i++) {
+			noticiasDatas.add(Helper.convertorDataTypeEntidadNoticia(noticiaDao.obtenerNoticias().get(i)));
+		}	
+		 return noticiasDatas;
+	 }
+    
+ /*
+    @GET
+    @Path("/pubicaciones")
+    @Produces
+    public List<Publicacion>  listarPublicaciones(){
+    	return publicacionDao.obtenerPublicaciones();
+    }
+    
+    @POST
+    @Path("/crearNoticia")
+    @Produces
+    public void crearNoticia(NoticiaDataType noticiaData) {
+    	
+    	Noticia noticia = Helper.convertorDataTypeEntidadNoticia(noticiaData);    	
+    	
+    	noticiaDaoI.adicionarNoticia(noticia);
+    }*/
+
+}

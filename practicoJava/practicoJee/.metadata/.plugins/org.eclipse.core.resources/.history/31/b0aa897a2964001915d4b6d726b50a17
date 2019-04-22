@@ -1,0 +1,99 @@
+package com.practico.entyties;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.*;
+
+/**
+ * Entity implementation class for Entity: Noticia
+ *
+ */
+@Entity
+@NamedQueries({
+@NamedQuery(name="Noticia.getAll", query="SELECT n FROM Noticia n"),
+@NamedQuery(name="Noticia.getBySeguimiento", query="SELECT n FROM Noticia n WHERE n.seguimiento = :seguimiento")
+})
+public class Noticia implements Serializable {
+
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name="NOTICIA")
+	private long id;
+	
+	@Column(name="SEGUIMIENTO")
+	private long seguimiento;
+	
+	@Column(name="TITULO")
+	private String titulo;
+	
+	@Column(name="DESCRIPCION")
+	private String descripcion;
+	
+
+
+	@OneToMany
+	private List<Publicacion> publicaciones;
+
+	public Noticia() {
+		super();
+		
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	
+	public List<Publicacion> getPublicaciones() {
+		return publicaciones;
+	}
+
+	public void setPublicaciones(List<Publicacion> publicaciones) {
+		this.publicaciones = publicaciones;
+	}
+
+	public long getSeguimiento() {
+		return seguimiento;
+	}
+
+	public void setSeguimiento(long seguimiento) {
+		this.seguimiento = seguimiento;
+	}
+
+	@Override
+	public String toString() {
+		return "Noticia [id=" + id + ", seguimiento=" + seguimiento + ", titulo=" + titulo + ", descripcion="
+				+ descripcion + ", publicaciones=" + publicaciones + "]";
+	}
+	
+	
+	
+	
+
+	
+	
+	
+   
+}

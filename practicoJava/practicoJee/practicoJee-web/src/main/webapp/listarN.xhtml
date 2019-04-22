@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h2>Noticias</h2>
+
+		<h:dataTable var="noticia" value="#{noticiaBeanManager.listaNoticias}" border="2">
+			<h:column>
+				<f:facet name="header">titulo</f:facet>
+                #{noticia.titulo}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Descripcion</f:facet>
+                #{noticia.descripcion}
+            </h:column>
+
+		</h:dataTable>
+
+
+	</ui:define>
+</ui:composition>
